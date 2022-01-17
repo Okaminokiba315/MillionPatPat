@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" type="text/css" href="tally.css" media="screen" /-->
+    <title>Million Touch</title>
+    <style>
+        body {
+            background-image: url("teater.png");
+            background-size: 100% 100%;
+        }
+        
+        h1 {
+            font-family: "Century Gothic";
+        }
+        
+        p {
+            font-family: "Century Gothic";
+            font-size: small;
+            font-weight: bolder;
+            text-align: center;
+        }
+        
+        h5 {
+            font-family: "Century Gothic";
+        }
+        
+        .idol {
+            position: relative;
+            transition: all .2s ease-in-out;
+        }
+        
+        .idol:hover {
+            transform: scale(1.25);
+        }
+        
+        .idol:active {
+            transform: scale(1.00);
+        }
+        
+        .container0 {
+            border: 5px solid #000;
+            border-radius: 10px;
+            width: 200px;
+            min-height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: darkgreen;
+        }
+        
+        .container {
+            border: 5px solid #000;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 800px;
+            min-height: 150px;
+            padding: 1rem;
+            background-color: mediumvioletred;
+        }
+        
+        #loli {
+            font-family: "Century Gothic";
+            text-align: right;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="bgm.mp3" id="lolice">  
+    </audio>
+    <center>
+        <br>
+        <br>
+        <h1>PRODUCER COLLECTION</h1>
+    </center>
+    <div align="right">
+        <div class="container0">
+            <p>Click Shizu for BGM!<br>Double Click To Stop!</p>
+            <img class="idol shizu" src="Lolices.jpg" height="50px" width="50px" onclick="volume()" ondblclick="volume2()">
+            <p>Happy Meter:</p>
+            <br>
+            <div id="loli" onclick="rank()">0</div><br>
+            <p>Loli</p>
+            <p>Click on the score to see your rank!</p>
+            <br>
+            <p>Click on the cat to save if you are going to refresh!</p>
+            <img class="idol akane" src="akacat.png" height="50px" width="50px" onclick="saveGame()" ondblclick="loadGame()">
+            <p>Click on the P-head to reset!</p>
+            <img class="idol p-kun" src="Pea.jpg" height="50px" width="50px" onclick="reset()">
+
+        </div>
+    </div>
+    <br>
+    <center>
+        <div class="container">
+            <center>
+                <img class="idol iku" id="iku" src="Iku.png" height="433px" width="340px" onclick="tickling()">
+                <img class="idol momoko" id="momoko" src="Momoko.png" height="433px" width="340px" onclick="tickling()">
+                <br>
+                <img class="idol serika" id="serika" src="Serika.png" height="433px" width="340px" onclick="tickling()">
+                <img class="idol emily" id="emily" src="Emily.png" height="433px" width="340px" onclick="tickling()">
+            </center>
+        </div>
+    </center>
+
+
+    </div>
+    <script>
+        var tickles = 0;
+        const getRandomNumber = (min, max) => {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        };
+        const pointy = () => getRandomNumber(4, 8);
+
+
+        function tickling() {
+            tickles += pointy()
+            document.getElementById('loli').innerHTML = tickles;
+        }
+
+        function reset() {
+            tickles -= tickles
+            document.getElementById('loli').innerHTML = tickles;
+        }
+
+        function volume() {
+            document.getElementById('lolice').play();
+        }
+
+        function volume2() {
+            document.getElementById('lolice').pause();
+            document.getElementById('lolice').currentTime = 0;
+        }
+
+        function rank() {
+            if (tickles <= 100) {
+                alert('Anda Kid Friendly');
+            }
+            if (tickles > 100 && tickles < 251) {
+                alert('Anda Children Lover');
+            }
+            if (tickles > 250 && tickles < 501) {
+                alert('Anda Sakuramori Kaori');
+            }
+            if (tickles > 500 && tickles < 1001) {
+                alert('Anda P(r)edo-cer');
+            }
+            if (tickles > 1000 && tickles < 5001) {
+                alert('Anda Lolicon');
+            }
+            if (tickles > 5000 && tickles < 10001) {
+                alert('Anda Senior Predator. Polisi mencari anda.');
+            }
+            if (tickles > 10000 && tickles < 50001) {
+                alert('Anda SUPER LOLICON. Kami telah menelepon polisi.');
+            }
+            if (tickles > 50000) {
+                alert('ANDA ULTIMATE LOLICON, UWOOOOOOOOOOOGH');
+            }
+
+        }
+
+        function saveGame() {
+            var gSave = {
+                tickles: tickles,
+            };
+            localStorage.setItem('gSave', JSON.stringify(gSave));
+        }
+
+        function loadGame() {
+            var lastSave = JSON.parse(localStorage.getItem("gSave"));
+            if (typeof lastSave.tickles !== "undefined") tickles = lastSave.tickles;
+        }
+
+        window.onload = function() {
+            loadGame();
+            document.getElementById('loli').innerHTML = tickles;
+        }
+    </script>
+</body>
+
+</html>
