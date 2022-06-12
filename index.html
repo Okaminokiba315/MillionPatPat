@@ -39,6 +39,12 @@
             transform: scale(1.00);
         }
         
+        .cont {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
         .container0 {
             border: 5px solid #000;
             border-radius: 10px;
@@ -61,6 +67,7 @@
             min-height: 150px;
             padding: 1rem;
             background-color: mediumvioletred;
+            margin-right: 10px;
         }
         
         #loli {
@@ -79,7 +86,16 @@
         <br>
         <h1>PRODUCER COLLECTION</h1>
     </center>
-    <div align="right">
+    <div class="cont">
+        <div class="container">
+            <center>
+                <img class="idol iku" id="iku" src="Iku.png" height="433px" width="340px" onclick="tickling()">
+                <img class="idol momoko" id="momoko" src="Momoko.png" height="433px" width="340px" onclick="tickling()">
+                <br>
+                <img class="idol serika" id="serika" src="Serika.png" height="433px" width="340px" onclick="tickling()">
+                <img class="idol emily" id="emily" src="Emily.png" height="433px" width="340px" onclick="tickling()">
+            </center>
+        </div>
         <div class="container0">
             <p>Click Shizu for BGM!<br>Double Click To Stop!</p>
             <img class="idol shizu" src="Lolices.jpg" height="50px" width="50px" onclick="volume()" ondblclick="volume2()">
@@ -97,17 +113,6 @@
         </div>
     </div>
     <br>
-    <center>
-        <div class="container">
-            <center>
-                <img class="idol iku" id="iku" src="Iku.png" height="433px" width="340px" onclick="tickling()">
-                <img class="idol momoko" id="momoko" src="Momoko.png" height="433px" width="340px" onclick="tickling()">
-                <br>
-                <img class="idol serika" id="serika" src="Serika.png" height="433px" width="340px" onclick="tickling()">
-                <img class="idol emily" id="emily" src="Emily.png" height="433px" width="340px" onclick="tickling()">
-            </center>
-        </div>
-    </center>
 
 
     </div>
